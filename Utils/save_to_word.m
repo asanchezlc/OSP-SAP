@@ -22,6 +22,10 @@ end
 runGlobalOSP = PROJECT_OSP.config.runGlobalOSP;
 method = PROJECT_OSP.config.method;
 
+%Variables that will be modified; we store them to restore at the end
+backup_Plotsetups = PROJECT_OSP.Style_Options.styleplot.Plotsetups;
+backup_Plotref = PROJECT_OSP.Style_Options.styleplot.Plotref;
+
 % OSP Variables
 LISTADO_SETUP = PROJECT_OSP.OSP_results.LISTADO_SETUP;
 n_sensors = PROJECT_OSP.config.n_sensors;
@@ -154,8 +158,17 @@ for j = 1:numel(handles.axes4.Children)
 end
 set(handles.axes4,'visible','off');
 % ---------------------------------------
-
-PROJECT_OSP.Style_Options.styleplot.Plotsetups = PROJECT_OSP.Style_Options.styleplot.Plotsetups*0;
+% SET VARIABLES FOR NOT PLOTTING CHANNELS
+% In Plot_Mode_Shape_OSP function, if
+% isempty(PROJECT_OSP.Style_Options.styleplot.Plotsetups) ||
+% PROJECT_OSP.Style_Options.styleplot.Plotsetups(jiij) == 1 -> Channels are
+% plotted, so we adjust PROJECT_OSP.Style_Options.styleplot.Plotsetups so
+% that they won't be plotted
+if length(backup_Plotsetups) > 0
+    PROJECT_OSP.Style_Options.styleplot.Plotsetups = backup_Plotsetups*0;
+else  % This way we do not plot channels in a Global OSP case
+    PROJECT_OSP.Style_Options.styleplot.Plotsetups = 0;
+end
 PROJECT_OSP.Style_Options.styleplot.Plotref = 0;
 
 axis(handles.axes1,'off')
@@ -172,7 +185,7 @@ generated_figures{end+1} = baseFileName;
 
 %% MODE SHAPES
 % Write heading
-text_title ='Mode Shapes';
+text_title ='Target Mode Shapes';
 headingStyle = headingStyle_3;
 insertPageBreak = true;
 insertHeading(selection, text_title, headingStyle, insertPageBreak);
@@ -226,7 +239,17 @@ for i = 1:numel(selected)
         set(handles.axes4,'visible','off');
         % ---------------------------------------
 
-        PROJECT_OSP.Style_Options.styleplot.Plotsetups = PROJECT_OSP.Style_Options.styleplot.Plotsetups*0;
+        % SET VARIABLES FOR NOT PLOTTING CHANNELS
+        % In Plot_Mode_Shape_OSP function, if
+        % isempty(PROJECT_OSP.Style_Options.styleplot.Plotsetups) ||
+        % PROJECT_OSP.Style_Options.styleplot.Plotsetups(jiij) == 1 -> Channels are
+        % plotted, so we adjust PROJECT_OSP.Style_Options.styleplot.Plotsetups so
+        % that they won't be plotted
+        if length(backup_Plotsetups) > 0
+            PROJECT_OSP.Style_Options.styleplot.Plotsetups = backup_Plotsetups*0;
+        else  % This way we do not plot channels in a Global OSP case
+            PROJECT_OSP.Style_Options.styleplot.Plotsetups = 0;
+        end
         PROJECT_OSP.Style_Options.styleplot.Plotref = 0;
         
         axis(handles.axes1,'off')
@@ -359,7 +382,7 @@ selection.Font.Underline = false;
 % Insert figure
 [fig, ax] = plot_MAC_1(mac_OSP, annot_kws, modes_number);
 baseFileName = 'MAC_OSP'; % Define the file name for the saved figure
-figFile = [baseFileName, '.png']
+figFile = [baseFileName, '.png'];
 saveas(fig, fullfile(save_path,figFile)); % Save the figure as a PNG file in the current folder
 selection.InlineShapes.AddPicture(fullfile(save_path, figFile)); % Insert the image
 close(fig);
@@ -373,7 +396,7 @@ selection.Font.Underline = false;
 
 [fig, ax] = plot_MAC_1(mac_model, annot_kws, modes_number);
 baseFileName = 'MAC_Full'; % Define the file name for the saved figure
-figFile = [baseFileName, '.png']
+figFile = [baseFileName, '.png'];
 saveas(fig, fullfile(save_path,figFile)); % Save the figure as a PNG file in the current folder
 selection.InlineShapes.AddPicture(fullfile(save_path, figFile)); % Insert the image
 close(fig);
@@ -411,7 +434,8 @@ for iijjii = 1:n
         baseFileName = 'Sensors_Locations';
     end
 
-    PROJECT_OSP.Style_Options.styleplot.Plotsetups = PROJECT_OSP.Style_Options.styleplot.Plotsetups*0;
+    % Set variables for plotting channels according to Plot_Mode_Shape_OSP.
+    PROJECT_OSP.Style_Options.styleplot.Plotsetups = backup_Plotsetups*0;
     PROJECT_OSP.Style_Options.styleplot.Plotref = 0;  % Do not plot references
     PROJECT_OSP.Style_Options.styleplot.Plotsetups(iijjii) = 1;
 
@@ -437,7 +461,7 @@ if ~runGlobalOSP
     selection.TypeParagraph; % Move to a new paragraph after the text
     selection.Font.Underline = false;
 
-    PROJECT_OSP.Style_Options.styleplot.Plotsetups = PROJECT_OSP.Style_Options.styleplot.Plotsetups*0;
+    PROJECT_OSP.Style_Options.styleplot.Plotsetups = backup_Plotsetups*0;
     PROJECT_OSP.Style_Options.styleplot.Plotref = 1;
 
     axis(handles.axes1,'off')
@@ -467,6 +491,10 @@ if save_figures == 0
         end
     end
 end
+
+%% Restore default variables
+PROJECT_OSP.Style_Options.styleplot.Plotsetups = backup_Plotsetups;
+PROJECT_OSP.Style_Options.styleplot.Plotref = backup_Plotref;
 
 %% Update Table of Contents
 doc.TablesOfContents.Item(1).Update;  % Item(1) because there's only one ToC

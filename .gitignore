@@ -1,6 +1,9 @@
 # log folders inside examples (unuseful files)
 Examples/**/log/
 
+# not tracked folder for own tests
+not_tracked
+
 # SAP2000 files different to sdb
 *.ico
 *.$2k
