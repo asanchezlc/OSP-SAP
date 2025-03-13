@@ -23,10 +23,10 @@
    **`Run_Interface.m`**  
 
    Alternatively, if you prefer, you can **install the app** as described below:
-   - Open MATLAB and navigate to the downloaded `OSP_SAP.mlappinstall` file.
+   - Open MATLAB and navigate to the downloaded `OSP-SAP.mlappinstall` file.
    - **Double-click** the file, or use the following command in MATLAB:
      ```matlab
-     matlab.apputil.install('OSP_SAP.mlappinstall')
+     matlab.apputil.install('OSP-SAP.mlappinstall')
      ```
    - **Launch the app** from the **App Manager** in MATLAB.
 

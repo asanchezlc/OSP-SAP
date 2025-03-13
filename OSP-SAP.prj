@@ -1,0 +1,80 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="4208033876" file="C:\Users\Usuario\Documents\DOCTORADO_CODES\OSP-SAP-Installer\OSP-SAP.prj" location="C:\Users\Usuario\Documents\DOCTORADO_CODES\OSP-SAP-Installer" name="OSP-SAP" target="target.mlapps" target-name="Package App">
+    <param.appname>OSP-SAP</param.appname>
+    <param.authnamewatermark>Enrique Garcia-Macias</param.authnamewatermark>
+    <param.email>enriquegm@ugr.es</param.email>
+    <param.company>University of Granada (UGR)</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>A MATLAB-based Graphical User Interface (GUI) designed for Optimal Sensor Placement in SAP2000 finite element models.</param.summary>
+    <param.description>The software integrates four optimization algorithms to determine the best sensor locations for Operational Modal Analysis (OMA), ensuring efficient structural monitoring.
+
+Quick start tutorial: &lt;a href=""&gt;https://www.youtube.com/watch?v=jtKCTbMpAZ8&lt;/a&gt;
+
+Download the software: &lt;a href=""&gt;https://github.com/ipmlab-ugr-org/OSP-SAP&lt;/a&gt;
+
+Developped by the University of Granada (UGR). Please cite as:
+
+@article{yourcitation, 
+  author = {L\'{o}pez-Cuervo, Antonio S. and Garc\'{i}a-Mac\'{i}as, Enrique and Castro-Triguero, Rafael and Chiach\'{i}o-Ruano, Juan}, 
+  title = {OSP-SAP: A MATLAB graphical user interface for optimal sensor placement using SAP2000}, 
+  journal = {SoftwareX}, 
+  year = {2025}, 
+  doi = {--} 
+}</param.description>
+    <param.screenshot>${PROJECT_ROOT}\Logos\Big_Logo_OSP.jpg</param.screenshot>
+    <param.version>1.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>C:\Users\Usuario\Documents\DOCTORADO_CODES\OSP-SAP-Installer</param.output>
+    <param.guid>abc8f305-1aae-4b5d-b1ed-5aee9f52b828</param.guid>
+    <unset>
+      <param.icon />
+      <param.icons />
+      <param.version />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\Run_Interface.m</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\OSP_GUI.fig</file>
+      <file>${PROJECT_ROOT}\OSP_GUI.m</file>
+    </fileset.depfun>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\Algorithms</file>
+      <file>${PROJECT_ROOT}\Logos</file>
+      <file>${PROJECT_ROOT}\Utils</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file location="C:\Users\Usuario\Documents\DOCTORADO_CODES" name="OSP-SAP-Installer" optional="false">C:\Users\Usuario\Documents\DOCTORADO_CODES\OSP-SAP-Installer</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2018b</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
