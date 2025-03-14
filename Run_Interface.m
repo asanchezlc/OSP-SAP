@@ -1,5 +1,5 @@
 %% Run_Interface.m
-% Main which is executed to run the OSP-SAP interface
+% Main function which is executed to run the OSP-SAP interface
 
 % -----------------------------------------------------------------------------------------------------------
 % OSP-SAP: A MATLAB graphical user interface for optimal sensor placement using SAP2000
@@ -14,21 +14,26 @@
 % -----------------------------------------------------------------------------------------------------------
 
 
-clear
-clc
+function Run_Interface()
+    clear
+    clc
 
-addpath(genpath('Algorithms'));
-addpath(genpath('Utils'));
+    addpath(genpath('Algorithms'));
+    addpath(genpath('Utils'));
 
-% Default Path Addresses
-% Path to SAP2000
-PROJECT_OSP.config.SAP_Dir = 'C:\Program Files\Computers and Structures\SAP2000 23\SAP2000.exe';
-% Full path to API dll
-PROJECT_OSP.config.SAP_dll_Dir = 'C:\Program Files\Computers and Structures\SAP2000 23\SAP2000v1.dll';
-% Target DOFs
-PROJECT_OSP.config.Target_DOFs = [1,1,1];
-% Max. number of DOFs allowed for K, M matrices
-PROJECT_OSP.config.K_M_matrices.MaxDOFs_K_M = 10000;
+    % Default Path Addresses
+    % Path to SAP2000
+    global PROJECT_OSP;
+    PROJECT_OSP.config.SAP_Dir = 'C:\Program Files\Computers and Structures\SAP2000 23\SAP2000.exe';
+    % Full path to API dll
+    PROJECT_OSP.config.SAP_dll_Dir = 'C:\Program Files\Computers and Structures\SAP2000 23\SAP2000v1.dll';
+    % Target DOFs
+    PROJECT_OSP.config.Target_DOFs = [1,1,1];
+    % Max. number of DOFs allowed for K, M matrices
+    PROJECT_OSP.config.K_M_matrices.MaxDOFs_K_M = 10000;
+    
+    assignin('base', 'PROJECT_OSP', PROJECT_OSP);
 
-% Run GUI
-OSP_GUI
+    % Run GUI
+    OSP_GUI
+end
