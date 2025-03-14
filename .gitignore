@@ -40,7 +40,7 @@ Utils/OSP_GUI_utils/Plot_Mode_Shapes.m
 *.mex*
 
 # Packaged app and toolbox files
-*.mlappinstall
+
 *.mltbx
 
 # Generated helpsearch folders
