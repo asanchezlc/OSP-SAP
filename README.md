@@ -38,7 +38,7 @@
 
 ## 🎯 Usage
 1. Load a **SAP2000** finite element model in `.xls` format.
-2. Select target mode shapes and sensor constraints.
+2. Select target DOF directions and target modes.
 3. Choose one of the four OSP algorithms.
 4. Run the optimization and analyze results via interactive visualizations.
 5. Export the optimized sensor layout in **AutoCAD (.dxf)** and **Word (.docx)** formats.
