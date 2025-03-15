@@ -59,8 +59,10 @@ try
     javaFrame = get(hObject,'JavaFrame');
     warning('on','all')
     p = mfilename('fullpath');
-    k = strfind(p,'\OSP_GUI');
-    filename=[p(1:k-1) '\Logos\Logo_OSP.jpg'];
+    %k = strfind(p,'\OSP_GUI');
+    k = strfind(p, [filesep 'OSP_GUI']);
+    %filename=[p(1:k-1) '\Logos\Logo_OSP.jpg'];
+    filename=[p(1:k-1) filesep 'Logos' filesep 'Logo_OSP.jpg'];
     RGB = imread(filename);
     javaImage = im2java(RGB);
     javaFrame.setFigureIcon(javax.swing.ImageIcon(filename));
@@ -68,29 +70,37 @@ end
 
 
 p = mfilename('fullpath');
-k = strfind(p,'\OSP_GUI');
-filename=[p(1:k-1) '\Logos\XYZ_axes.jpg'];
+%k = strfind(p,'\OSP_GUI');
+k = strfind(p, [filesep 'OSP_GUI']);
+%filename=[p(1:k-1) '\Logos\XYZ_axes.jpg'];
+filename=[p(1:k-1) filesep 'Logos' filesep 'XYZ_axes.jpg'];
 [X,map] = imread(filename);
 X=imresize(X, [15 15]);
 set(handles.pushbutton16, 'CData', X);
 
 p = mfilename('fullpath');
-k = strfind(p,'\OSP_GUI');
-filename=[p(1:k-1) '\Logos\XY_axes.jpg'];
+%k = strfind(p,'\OSP_GUI');
+k = strfind(p, [filesep 'OSP_GUI']);
+%filename=[p(1:k-1) '\Logos\XY_axes.jpg'];
+filename=[p(1:k-1) filesep 'Logos' filesep 'XY_axes.jpg'];
 [X,map] = imread(filename);
 X=imresize(X, [15 15]);
 set(handles.pushbutton17, 'CData', X);
 
 p = mfilename('fullpath');
-k = strfind(p,'\OSP_GUI');
-filename=[p(1:k-1) '\Logos\XZ_axes.jpg'];
+% k = strfind(p,'\OSP_GUI');
+k = strfind(p, [filesep 'OSP_GUI']);
+%filename=[p(1:k-1) '\Logos\XZ_axes.jpg'];
+filename=[p(1:k-1) filesep 'Logos' filesep 'XZ_axes.jpg'];
 [X,map] = imread(filename);
 X=imresize(X, [15 15]);
 set(handles.pushbutton18, 'CData', X);
 
 p = mfilename('fullpath');
-k = strfind(p,'\OSP_GUI');
-filename=[p(1:k-1) '\Logos\YZ_axes.jpg'];
+%k = strfind(p,'\OSP_GUI');
+k = strfind(p, [filesep 'OSP_GUI']);
+%filename=[p(1:k-1) '\Logos\YZ_axes.jpg'];
+filename=[p(1:k-1) filesep 'Logos' filesep 'YZ_axes.jpg'];
 [X,map] = imread(filename);
 X=imresize(X, [15 15]);
 set(handles.pushbutton19, 'CData', X);
