@@ -92,7 +92,7 @@ selection = wordApp.Selection;
 header = selection.Sections.Item(1).Headers.Item(1); % 1 = wdHeaderFooterPrimary
 header.Range.Text = ''; % Clear existing header content if needed
 p = mfilename('fullpath');
-k = strfind(p,'\Utils');
+k = strfind(p, [filesep 'Utils']);
 currfolder = p(1:k(1)-1);
 imagePath = fullfile(currfolder, 'figure.png'); % Get full path of the image
 header.Range.InlineShapes.AddPicture(fullfile(currfolder, 'Logos/Big_Logo_OSP.jpg'), 0, 1); % (LinkToFile=0, SaveWithDocument=1)

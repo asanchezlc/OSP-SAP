@@ -64,8 +64,8 @@ try
     javaFrame = get(hObject,'JavaFrame');
     warning('on','all')
     p = mfilename('fullpath');
-    k = strfind(p,'\Utils');
-    filename=[p(1:k-1) '\Logos\Logo_OSP.jpg'];
+    k = strfind(p, [filesep 'Utils']);
+    filename = [p(1:k-1) filesep 'Logos' filesep 'Logo_OSP.jpg'];
     RGB = imread(filename);
     javaImage = im2java(RGB);
     javaFrame.setFigureIcon(javax.swing.ImageIcon(filename));

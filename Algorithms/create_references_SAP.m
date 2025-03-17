@@ -8,11 +8,11 @@ function [] = create_references_SAP(FileName,PROJECT_OSP,nref)
 %% Copy base database
 file = PROJECT_OSP.config.SAP_model;
 [filepath,name,ext] = fileparts(file);
-if ~exist([filepath,'\log'], 'dir')
-    mkdir([filepath,'\log'])
+if ~exist([filepath, filesep, 'log'], 'dir')
+    mkdir([filepath, filesep, 'log'])
 end
-ofile = fullfile([filepath,'\log'],'Base_model_iter.xlsx');
-ofilesdb = fullfile([filepath,'\log'],'Base_model_iter.sdb');
+ofile = fullfile(filepath, 'log', 'Base_model_iter.xlsx');
+ofilesdb = fullfile(filepath, 'log', 'Base_model_iter.sdb');
 % List with the sheet names
 % sheets = spreadsheetDatastore([pwd '\' ofile]);
 status = copyfile(file,ofile);
