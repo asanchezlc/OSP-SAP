@@ -166,7 +166,11 @@ w = warning ('on','all');
 guidata(hObject, handles);
 
 % UIWAIT makes OSP_GUI wait for user response (see UIRESUME)
-uiwait(handles.figure1);
+if usejava('desktop')
+    uiwait(handles.figure1);
+else
+    disp('Running in headless mode: skipping uiwait');
+end
 
 
 
@@ -361,8 +365,12 @@ else
     elseif case_opt == 3
         message = 'A Global-OSP will be run using all Setup groups as candidate DOFs';
     end
-    f = msgbox(message);
-    uiwait(f); % Wait until the user closes the message box
+    if usejava('desktop')
+        f = msgbox(message);
+        uiwait(f); % Wait until the user closes the message box
+    else
+        disp('Running in headless mode: skipping uiwait');
+    end
 end
 
 PROJECT_OSP.config.runGlobalOSP = runGlobalOSP;
@@ -1368,7 +1376,14 @@ function pushbutton20_Callback(hObject, eventdata, handles)
 PROJECT_OSP = evalin('base', 'PROJECT_OSP');
 style_to_plot_OSP_2
 
-uiwait(style_OSP)
+% Only use uiwait if MATLAB is running with a GUI
+if usejava('desktop')
+    uiwait(style_OSP)
+else
+    disp('Running in headless mode: skipping uiwait');
+end
+
+
 PROJECT_OSP = evalin('base', 'PROJECT_OSP');
 
 
