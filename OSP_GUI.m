@@ -156,8 +156,14 @@ w = warning ('off','all');
 try
     set(handles.figure1,'visible','on');
     drawnow
-    frame_h = get(handles.figure1,'JavaFrame');
-    set(frame_h,'Maximized',1);
+    if usejava('desktop') % Only run in GUI mode
+        try
+            frame_h = get(handles.figure1, 'JavaFrame');
+            set(frame_h, 'Maximized', 1);
+        catch
+            warning('Maximizing window failed. Running in headless mode?');
+        end
+    end
 end
 w = warning ('on','all');
 
