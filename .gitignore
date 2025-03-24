@@ -25,7 +25,7 @@ not_tracked
 *.Y05
 
 # Plot_Mode_Shapes.m function
-Utils/OSP_GUI_utils/Plot_Mode_Shapes.m
+src/Utils/OSP_GUI_utils/Plot_Mode_Shapes.m
 
 # Opened microsoft files
 ~$*
